@@ -53,7 +53,7 @@ const domStringBuilder = (array) => {
     domString += `<div class="card">`;
     domString += `<h3>${item.name}</h3>`;
     domString += `<h4>${item.house}</h4>`
-    domString += `<button id=${item.name}>Expel</button>`
+    domString += `<button id=${item.name} class="btn btn-primary">Expel</button>`
     domString += `</div>`;
   })
   printToDom('sorting-hat', domString);
