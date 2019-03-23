@@ -13,6 +13,12 @@ let students = [
   }
 ];
 
+const randomHouse = () => {
+  let houses = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'];
+  const randomNum = Math.floor(Math.random() * 4);
+  return houses[randomNum]
+}
+
 const printStudent = () => {
   const newStudent = {};
   newStudent.name = document.getElementById('name').value
@@ -23,20 +29,39 @@ const printStudent = () => {
   document.getElementById('name').value = '';
 }
 
+const expelStudent = (event) => {
+  let newArray = [];
+  students.forEach((student) => {
+    if(student.name !== event.target.id) {
+      newArray.push(student); 
+    }
+  })
+  students = newArray;
+  domStringBuilder(students);
+}
+
 const domStringBuilder = (array) => {
   let domString = '';
   array.forEach((item) => {
     domString += `<div class="card">`;
     domString += `<h3>${item.name}</h3>`;
+    domString += `<h4>${randomHouse()}</h4>`
     domString += `<button id=${item.name}>Expel</button>`
     domString += `</div>`;
   })
   printToDom('sorting-hat', domString);
+  array.forEach((item) => {
+    expelEventListeners(item.name);
+  })
 }
 
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.getElementById(divId);
   selectedDiv.innerHTML = textToPrint;
+}
+
+const expelEventListeners = (element) => {
+  document.getElementById(element).addEventListener('click', expelStudent);
 }
 
 const eventListeners = () => {
@@ -46,6 +71,7 @@ const eventListeners = () => {
 const init = () => {
   domStringBuilder(students);
   eventListeners();
+  randomHouse();
 }
 
 init()
