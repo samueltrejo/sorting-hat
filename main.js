@@ -13,6 +13,12 @@ let students = [
   }
 ];
 
+const onLoad = () => {
+  students.forEach((student) => {
+    student.house = randomHouse();
+  })
+}
+
 const randomHouse = () => {
   let houses = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'];
   const randomNum = Math.floor(Math.random() * 4);
@@ -22,6 +28,7 @@ const randomHouse = () => {
 const printStudent = () => {
   const newStudent = {};
   newStudent.name = document.getElementById('name').value
+  newStudent.house = randomHouse()
   document.getElementById
   students.push(newStudent);
   domStringBuilder(students);
@@ -45,7 +52,7 @@ const domStringBuilder = (array) => {
   array.forEach((item) => {
     domString += `<div class="card">`;
     domString += `<h3>${item.name}</h3>`;
-    domString += `<h4>${randomHouse()}</h4>`
+    domString += `<h4>${item.house}</h4>`
     domString += `<button id=${item.name}>Expel</button>`
     domString += `</div>`;
   })
@@ -69,9 +76,9 @@ const eventListeners = () => {
 }
 
 const init = () => {
+  onLoad();
   domStringBuilder(students);
   eventListeners();
-  randomHouse();
 }
 
 init()
