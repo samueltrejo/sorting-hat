@@ -16,9 +16,11 @@ let students = [
 const printStudent = () => {
   const newStudent = {};
   newStudent.name = document.getElementById('name').value
+  document.getElementById
   students.push(newStudent);
-  console.log(newStudent, students)
   domStringBuilder(students);
+
+  document.getElementById('name').value = '';
 }
 
 const domStringBuilder = (array) => {
