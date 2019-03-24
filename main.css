@@ -1,5 +1,21 @@
 body {
-  background-color: aliceblue;
+  background-image: url('./img/hphouses3.jpg');
+  background-position: center;
+  background-size: contain;
+}
+
+.container {
+  opacity: .95;
+}
+
+.jumbotron {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+
+hr {
+  border-top: 1px solid white;
 }
 
 #sorting-hat {
@@ -11,10 +27,90 @@ body {
 
 .card {
   display: flex;
-  border: 1px solid black;
+  color: white;
+  background-color: black;
+  border: 1px solid white;
   width: 200px;
   justify-content: space-between;
   margin-right: 50px;
   margin-bottom: 15px;
   padding: 10px;
+}
+
+.Gryffindor {
+  background-color: rgb(85, 9, 13);
+}
+.Slytherin {
+  background-color: rgb(41, 92, 35);
+}
+.Ravenclaw {
+  background-color: rgb(13, 52, 81);
+}
+.Hufflepuff {
+  background-color: rgb(14, 15, 10);
+}
+
+.btn {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+}
+
+.btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.Gryffindor-btn {
+  background-color: rgb(251, 200, 29);
+}
+
+.Slytherin-btn {
+  background-color: rgb(129, 122, 116);
+}
+
+.Ravenclaw-btn {
+  background-color: rgb(169, 161, 159);
+}
+
+.Hufflepuff-btn {
+  background-color: rgb(216, 219, 30);
+}
+
+.Gryffindor:hover {
+  background-color: rgb(66, 5, 8);
+  
+}
+
+.Slytherin:hover {
+  background-color: rgb(25, 65, 21);
+}
+
+.Ravenclaw:hover {
+  background-color: rgb(7, 36, 58);
+}
+
+.Hufflepuff:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+.Gryffindor-btn:hover {
+  background-color: rgb(190, 151, 21);
+  border: 1px solid white;
+}
+
+.Slytherin-btn:hover {
+  background-color: rgb(105, 99, 94);
+  border: 1px solid white;
+}
+
+.Ravenclaw-btn:hover {
+  background-color: rgb(138, 130, 128);
+  border: 1px solid white;
+}
+
+.Hufflepuff-btn:hover {
+  background-color: rgb(188, 190, 17);
+  border: 1px solid white;
 }
