@@ -1,7 +1,7 @@
 # Sorting Hat
 Sign up for Hogwarts! Enter your name to get randomly assigned to a house. Click expel button to remove students.
 
-![image of Sorting Hat](https://raw.githubusercontent.com/samueltrejo/sorting-hat/master/img/sortinghat-readmeimg.PNG)
+![image of Sorting Hat](https://raw.githubusercontent.com/samueltrejo/sorting-hat/master/img/sortinghat-readmeimg2.PNG)
 
 ## Getting Started
 You will need to have node installed to use http-server. Note if you already have node and http-server installed, skip to `How To Run`.
