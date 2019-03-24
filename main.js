@@ -19,6 +19,38 @@ const onLoad = () => {
   })
 }
 
+const errorCheck = (value) => {
+  let alert = '';
+  let errorCode = false;
+  if(value.length === 0) {
+    alert = `
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Whoops!</strong> Looks like you forgot to enter your name.
+    </div>`
+    printToDom('alert-container', alert)
+    errorCode = true;
+  } else if (!/^[a-zA-Z]*$/g.test(value)) {
+    alert = `
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Whoops!</strong> Looks like you entered an invalid character.
+    </div>`
+    printToDom('alert-container', alert)
+    errorCode = true;
+  } else if (errorCode === false) {
+    students.forEach((student) => {
+      if(value === student.name) {
+        alert = `
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Whoops!</strong> Looks looks like are already signed up.
+        </div>`
+        printToDom('alert-container', alert)
+        errorCode = true;
+      }
+    })
+  }
+  return errorCode
+}
+
 const randomHouse = () => {
   let houses = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Hufflepuff'];
   const randomNum = Math.floor(Math.random() * 4);
@@ -28,23 +60,14 @@ const randomHouse = () => {
 const printStudent = () => {
   const newStudent = {};
   newStudent.name = document.getElementById('name').value
-  if(newStudent.name.length === 0) {
-    const alert = `
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Whoops!</strong> Looks like you forgot to enter your name.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>`
-    printToDom('alert-container', alert)
-  } else {
+  const errorCode = errorCheck(newStudent.name)
+  if (errorCheck(newStudent.name) === false) {
     newStudent.house = randomHouse()
     document.getElementById
     students.push(newStudent);
     domStringBuilder(students);
     $('#form-modal').modal('hide');
   }
-
   document.getElementById('name').value = '';
 }
 
