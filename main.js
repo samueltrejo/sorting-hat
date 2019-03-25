@@ -10,8 +10,35 @@ let students = [
   },
   {
     name: 'Doug'
-  }
+  },
+  {
+    name: 'Candace'
+  },
+  {
+    name: 'Brittany'
+  },
+  {
+    name: 'Ashley'
+  },
+  {
+    name: 'Mary'
+  },
 ];
+
+const sorteo = (array) => {
+  let sortArray = [];
+  let newArray = [];
+  let index = 0;
+  array.forEach((item) => {
+    sortArray.push(item.name + `${index}`);
+    index++;
+  })
+  sortArray.sort()
+  sortArray.forEach((name) => {
+    newArray.push(students[name[name.length -1]])
+  })
+  students = newArray;
+}
 
 const onLoad = () => {
   students.forEach((student) => {
@@ -65,7 +92,8 @@ const printStudent = () => {
     newStudent.house = randomHouse()
     document.getElementById
     students.push(newStudent);
-    domStringBuilder(students);
+    sorteo(students);
+    determineHouseDiv(students);
     $('#form-modal').modal('hide');
   }
   document.getElementById('name').value = '';
@@ -79,19 +107,47 @@ const expelStudent = (event) => {
     }
   })
   students = newArray;
-  domStringBuilder(students);
+  sorteo(students);
+  determineHouseDiv(students);
 }
 
-const domStringBuilder = (array) => {
-  let domString = '';
+const determineHouseDiv = (array) => {
+  let gryf = [];
+  let slyth = [];
+  let rav = [];
+  let huff = [];
   array.forEach((item) => {
-    domString += `<div class="card ${item.house}">`;
+    if(item.house === 'Gryffindor') {
+      gryf.push(item)
+    }
+    if(item.house === 'Slytherin') {
+      slyth.push(item)
+    }
+    if(item.house === 'Ravenclaw') {
+      rav.push(item)
+    }
+    if(item.house === 'Hufflepuff') {
+      huff.push(item)
+    }
+  })
+  domStringBuilder(gryf, 'Gryffindor');
+  domStringBuilder(slyth, 'Slytherin');
+  domStringBuilder(rav, 'Ravenclaw');
+  domStringBuilder(huff, 'Hufflepuff');
+}
+
+const domStringBuilder = (array, divId) => {
+  let domString = '';
+  domString += `<div class="row"><h3 style="color: white;">${divId}</h3></div>`
+  array.forEach((item) => {
+    domString += `<div class="card ${item.house} row">`;
     domString += `<h3>${item.name}</h3>`;
     domString += `<h4>${item.house}</h4>`
     domString += `<button id=${item.name} class="btn btn-primary ${item.house}-btn">Expel</button>`
     domString += `</div>`;
+    // printToDom(item.house, domString);
   })
-  printToDom('sorting-hat', domString);
+  printToDom(divId, domString);
   array.forEach((item) => {
     expelEventListeners(item.name);
   })
@@ -119,8 +175,9 @@ const eventListeners = () => {
 }
 
 const init = () => {
+  sorteo(students);
   onLoad();
-  domStringBuilder(students);
+  determineHouseDiv(students);
   eventListeners();
 }
 
